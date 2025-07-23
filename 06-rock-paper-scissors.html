@@ -10,11 +10,17 @@
     <button onclick="playGame('rock');">Rock</button>
     <button onclick="playGame('paper');">Paper</button>
     <button onclick="playGame('scissors');">Scissors</button>
-    <button onclick="clearScore()">Reset Score</button>
+
+    <p class="js-result"></p>
+    <p class="js-moves"></p>
+    <p class="js-score"></p>
+
+    <button onclick="resetScore()">Reset Score</button>
 
     <script>
-      function clearScore() {
+      function resetScore() {
         (score.wins = 0), (score.losses = 0), (score.ties = 0);
+        updateScore();
       }
       // retrieve JSON string from localStorage and convert to object
       const score = JSON.parse(localStorage.getItem("score"));
@@ -61,13 +67,15 @@
           score.ties += 1;
         }
 
+        updateScore();
+
+        document.querySelector(".js-result").innerHTML = `${result}`;
+        document.querySelector(
+          ".js-moves"
+        ).innerHTML = `You picked ${playerMove}. Computer picked ${computerMove}.`;
+
         // Save to localStorage
         localStorage.setItem("score", JSON.stringify(score));
-
-        //  Display the result on a popup
-        alert(
-          `You picked ${playerMove}. Computer picked ${computerMove}. ${result}\nWins: ${score.wins}. Losses: ${score.losses}. Ties: ${score.ties}`
-        );
       }
 
       function getComputerMove() {
@@ -84,6 +92,12 @@
         }
 
         return computerMove;
+      }
+
+      function updateScore() {
+        document.querySelector(
+          ".js-score"
+        ).innerHTML = `Wins: ${score.wins}. Losses: ${score.losses}. Ties: ${score.ties}`;
       }
     </script>
   </body>
