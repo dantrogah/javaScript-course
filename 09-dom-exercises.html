@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document Object Model</title>
+  </head>
+  <body>
+    <!-- Ex 1 -->
+    <button>9a</button>
+    <button class="btnTwo">9b</button>
+    <!-- Ex 2 -->
+    <button class="head" onclick="clickHead()">heads</button>
+    <button class="tail" onclick="clickTail()">tails</button>
+    <p class="result"></p>
+
+    <!-- Ex 3 -->
+    <input
+      class="userName"
+      type="text"
+      placeholder="Enter name"
+      onkeydown="displayMessage(event)"
+    />
+    <button type="submit" onclick="displayName()">Submit</button>
+    <p class="showResult"></p>
+
+    <!-- Ex 4 -->
+    <input type="text" />
+
+    <script>
+      function displayMessage(event) {
+        if (event.key === "Enter") {
+          displayName();
+        }
+      }
+
+      function displayName() {
+        let data = document.querySelector(".userName").value;
+        document.querySelector(
+          ".showResult"
+        ).innerHTML = `<h3>Your name is ${data}.</h3>`;
+      }
+
+      function clickHead() {
+        // let headBtn = document.querySelector(".head");
+        document.querySelector(".result").innerHTML =
+          "<h2>You chose: heads</h2>";
+      }
+
+      function clickTail() {
+        // let tailBtn = document.querySelector(".tail");
+        document.querySelector(".result").innerHTML =
+          "<h2>You chose: tails.</h2>";
+      }
+
+      const btnElement = document.querySelector("button");
+      console.log(btnElement);
+
+      document.querySelector(".btnTwo").innerText = "9b done!";
+    </script>
+  </body>
+</html>

@@ -4,6 +4,44 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document Object Model</title>
+    <style>
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .subscribe {
+        border: none;
+        background-color: #000;
+        color: #fff;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 15px;
+        padding-right: 15px;
+        font-weight: bold;
+        border-radius: 50px;
+        cursor: pointer;
+        margin-bottom: 30px;
+      }
+
+      .is-subscribed {
+        background-color: rgb(240, 240, 240);
+        color: #000;
+      }
+
+      .subscribe-button {
+        font-size: 15px;
+        padding: 10px;
+      }
+
+      .calculate-button {
+        background-color: green;
+        color: white;
+        border: none;
+        font-size: 15px;
+        padding: 12px 15px;
+        cursor: pointer;
+      }
+    </style>
   </head>
   <body>
     <p>YouTube Subscribe Button</p>
@@ -12,12 +50,14 @@
     <!-- Shipping Calculator -->
     <p>Amazon Shipping Calculator</p>
     <input
-      class="userInput"
+      class="userInput subscribe-button"
       onkeydown="handleKeyDown(event)"
       type="text"
       placeholder="Cost of order"
     />
-    <button onclick="calculateTotal()">Calculate</button>
+    <button onclick="calculateTotal()" class="calculate-button">
+      Calculate
+    </button>
     <p class="showResult"></p>
 
     <!-- Final Exercise -->
@@ -37,13 +77,16 @@
         document.querySelector(".showKey").innerHTML =
           document.querySelector(".input").value;
       }
+
       function changeText() {
         const btnContent = document.querySelector(".subscribe");
 
         if (btnContent.innerText === "Subscribe") {
           btnContent.innerHTML = "Subscribed!";
+          btnContent.classList.add("is-subscribed");
         } else if (btnContent.innerText === "Subscribed!") {
           btnContent.innerHTML = "Subscribe";
+          btnContent.classList.remove("is-subscribed");
         }
       }
 
