@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arrays Test</title>
+  </head>
+  <body>
+    <input type="text" name="todo" id="" placeholder="Todo name" class="todo" />
+    <button onclick="addToList()">Add</button>
+
+    <script>
+      // save data
+      let todoList = [];
+
+      function addToList() {
+        const userChoice = document.querySelector(".todo");
+        const name = userChoice.value;
+
+        todoList.push(name);
+
+        userChoice.value = "";
+        console.log(todoList);
+      }
+    </script>
+  </body>
+</html>
